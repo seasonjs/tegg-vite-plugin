@@ -1,0 +1,59 @@
+{
+  "name": "@seasonjs/tegg-vite-plugin",
+  "eggPlugin": {
+    "name": "tegg-vite-plugin"
+  },
+  "version": "0.0.1",
+  "description": "vite plugin for egg",
+  "keywords": [
+    "egg",
+    "plugin",
+    "typescript",
+    "module",
+    "tegg",
+    "vite",
+    "ssr",
+    "csr",
+    "eggPlugin",
+    "egg-plugin"
+  ],
+  "files": [
+    "app.js",
+    "app.d.ts",
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "app/**/*.js",
+    "app/**/*.d.ts",
+    "typings/*.d.ts"
+  ],
+  "types": "typings/index.d.ts",
+  "scripts": {
+    "clean": "tsc -b --clean",
+    "tsc": "npm run clean && tsc -p ./tsconfig.json"
+  },
+  "homepage": "https://github.com/seasonjs/tegg-vite-plugin",
+  "bugs": {
+    "url": "https://github.com/seasonjs/tegg-vite-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:seasonjs/tegg-vite-plugin.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "vite": "latest",
+    "egg": "latest"
+  },
+  "peerDependencies": {
+    "vite": "latest",
+    "egg": "latest"
+  },
+  "dependencies": {
+    "koa2-connect": "latest"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
