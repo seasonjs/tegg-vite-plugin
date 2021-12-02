@@ -22,6 +22,9 @@
     "inlineSourceMap": true,
     "declaration": true,
     "resolveJsonModule": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "moduleResolution": "Node",
+    "isolatedModules": true,
+    "noEmit": true
   }
 }
