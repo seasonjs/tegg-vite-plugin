@@ -100,6 +100,8 @@ export default config;
 ```
 2. Put your render function to controller,if you want to use this plugin default handler:
 
+** [Notie!!!]:  default handler not ready for work**
+
 ```typescript
 //controller/SSRController.ts
 import {
