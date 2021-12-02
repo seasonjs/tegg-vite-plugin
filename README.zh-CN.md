@@ -1,19 +1,17 @@
-English | [简体中文](./README.zh-CN.md)
+[English](./README.md) | 简体中文
 
 <img src="https://github.com//seasonjs/tools/blob/main/public/icon.svg?raw=true" alt="logo.png" width="150">
 
 # @seasonjs/tegg-vite-plugin
 
-use vite and egg for ssr or csr
+使用 vite 和 egg 实现 ssr 或者 csr
 
-## 1. Enable this plugin just two step
+### 只需两部即可启动
 
-This example not enable ssr by default,it just enable csr
-
-1. Add `vite` filed to config by default will use default config it will set vite root dir at `/client`
+1. 使用插件默认配置，并配置`vite` 默认字段 这将会将vite的`root`根目录设置在`/client`:
 
 ```typescript
-//config/config.default.ts
+
 import {EggAppConfig, PowerPartial} from "egg";
 
 const config: PowerPartial<EggAppConfig> = {
@@ -22,48 +20,48 @@ const config: PowerPartial<EggAppConfig> = {
 export default config;
 
 ```
-2. Add tegg-vite-plugin to `plugin.ts`
+
+2. 添加 `tegg-vite-plugin` 到 `plugin.ts`
 
 ```typescript
-//config/plugin.ts
-import { EggPlugin } from 'egg';
+import {EggPlugin} from 'egg';
 import * as path from 'path';
 
 const plugin: EggPlugin = {
-  teggVite: {
-    enable: true,
-    package: '@seasonjs/tegg-vite-plugin',
-  },
+    teggVite: {
+        enable: true,
+        package: '@seasonjs/tegg-vite-plugin',
+    },
 };
 
 export default plugin;
 ```
 
-## 2. egg config options
+### egg 配置文件的字段
 
-`vite` config filed extends `vite` config options by [InlineConfig](https://vitejs.dev/guide/api-javascript.html#inlineconfig) ,
+`vite` 配置继承于 vite config 的 [InlineConfig](https://vitejs.dev/guide/api-javascript.html#inlineconfig) 类型,
 
-detail see [vite doc:createserver](https://vitejs.dev/guide/api-javascript.html#createserver).
+细节可以参考： [vite doc:createserver](https://vitejs.dev/guide/api-javascript.html#createserver).
 
-but there have add an new filed call `teggSSR`:
+but 但是与之不同的是为了方便ssr，增加了 `teggSSR`字段:
+
 ```typescript
 
- interface ViteConfig extends InlineConfig {
+interface ViteConfig extends InlineConfig {
     teggSSR?: {
-        html?: string //template html path
-        entry?: string //ssr server js entry
+        html?: string //html 模板路径
+        entry?: string //ssr js 服务文件路径
     }
 }
 
 ```
+## 开启 SSR
 
-## 3. Enable SSR
+1. 添加 `vite`  的默认配置字段 将会使用默认的配置到 `/client`
 
-1. Add `vite` filed to config by default will use default config it will set vite root dir at `/client`.
+如果你使用默认配置,将会吧入口设置到 `your-project-root/client/index.html`
 
-If you use default setting,it will set html path to `your-project-root/client/index.html`
-
-and use ssr-entry by this plugin default render function:
+并且使用默认的ssr入口渲染方法
 
 
 ```typescript
@@ -80,7 +78,7 @@ export default config;
 
 ```
 
-or you can set by custom:
+你也可以自定义配置
 ```typescript
 //config/config.default.ts
 import {EggAppConfig, PowerPartial} from "egg";
@@ -90,15 +88,15 @@ const config: PowerPartial<EggAppConfig> = {
     vite: {
         server: {middlewareMode: 'ssr'},
         teggSSR: {
-            html: path.reslove('../client/index.html'),//path to your-project/client/index.html
-            entry: path.reslove('../client/ssr-entry.ts')//path to your-project/client/ssr-entry.ts
+            html: path.reslove('../client/index.html'),// 你的项目/client/index.html
+            entry: path.reslove('../client/ssr-entry.ts')// 你的项目/client/ssr-entry.ts
         }
     }
 }
 export default config;
 
 ```
-2. Put your render function to controller,if you want to use this plugin default handler:
+2. 把你的处理方法放入Controller,如果你使用的是这个插件的默认ssr render：
 
 ```typescript
 //controller/SSRController.ts
@@ -128,7 +126,7 @@ export class SSRController {
 
 ```
 
-Else I suggest you use your custom handle function It not complex:
+除此之外我更建议你定制自己的处理方法，其实也并不复杂：
 
 ```typescript
 //controller/SSRController.ts
@@ -157,37 +155,37 @@ export class SSRController {
         const url = ctx.req.originalUrl
 
         try {
-            // 1. Read index.html
+            // 1. 读取 index.html
             let template = fs.readFileSync(
                 path.resolve(__dirname, 'index.html'),
                 'utf-8'
             )
 
-            // 2. Apply Vite HTML transforms. This injects the Vite HMR client, and
-            //    also applies HTML transforms from Vite plugins, e.g. global preambles
-            //    from @vitejs/plugin-react-refresh
+            // 2. 应用 Vite HTML 转换。这将会注入 Vite HMR 客户端，
+            //    同时也会从 Vite 插件应用 HTML 转换。
+            //    例如：@vitejs/plugin-react-refresh 中的 global preambles
             template = await this.app.vite.transformIndexHtml(url, template)
 
-            // 3. Load the server entry. vite.ssrLoadModule automatically transforms
-            //    your ESM source code to be usable in Node.js! There is no bundling
-            //    required, and provides efficient invalidation similar to HMR.
+            // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
+            //    你的 ESM 源码使之可以在 Node.js 中运行！无需打包
+            //    并提供类似 HMR 的根据情况随时失效。
             const {render} = await this.app.vite.ssrLoadModule('/src/entry-server.js')
 
-            // 4. render the app HTML. This assumes entry-server.js's exported `render`
-            //    function calls appropriate framework SSR APIs,
-            //    e.g. ReactDOMServer.renderToString()
+            // 4. 渲染应用的 HTML。这假设 entry-server.js 导出的 `render`
+            //    函数调用了适当的 SSR 框架 API。
+            //    例如 ReactDOMServer.renderToString()
             const appHtml = await render(url)
 
-            // 5. Inject the app-rendered HTML into the template.
+            // 5. 注入渲染后的应用程序 HTML 到模板中。
             const html = template.replace(`<!--ssr-outlet-->`, appHtml)
 
-            // 6. Send the rendered HTML back.
+            // 6. 返回渲染后的 HTML。
             ctx.status = 200;
             ctx.set('Content-Type', 'text/html');
             ctx.body = html;
         } catch (e) {
-            // If an error is caught, let Vite fix the stracktrace so it maps back to
-            // your actual source code.
+            // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回
+            // 你的实际源码中。
             app.vite.ssrFixStacktrace(e);
             ctx.logger.error(e);
             ctx.res.status(500);
@@ -197,15 +195,15 @@ export class SSRController {
 }
 
 ```
-## Support
+## 支持
 
-Support all node > 14.0.0 and egg > 2.0.0
+支持所有 node > 14.0.0 并且 egg > 2.0.0
 
-## Contributors
+## 贡献者
 
 [@Cyberhan123](https://github.com/cyberhan123)
 
-## License
+## 协议
 
 [MIT](LICENSE)
 Copyright © 2021, seasonjs
