@@ -1,4 +1,4 @@
-import {defaultSSRRender} from "../lib";
+import {defaultSSRRender} from "../../lib";
 
 const VITE_SSR = Symbol('application#vite-SSR-render');
 
