@@ -1,5 +1,5 @@
 import { Application } from 'egg';
-import { initVitePlugin } from './app/lib'
+import { initVitePlugin } from './lib'
 
 export default class App {
   readonly app: Application;

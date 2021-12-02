@@ -1,8 +1,7 @@
 import {createServer as createViteServer, InlineConfig} from 'vite';
 import * as path from 'path';
-import * as c2k from 'koa2-connect';
 import * as fs from 'fs';
-
+import * as c2k from 'koa2-connect';
 
 export async function initVitePlugin(app) {
     let config: InlineConfig = {

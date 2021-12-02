@@ -11,7 +11,7 @@
 1. 使用插件默认配置，并配置`vite` 默认字段 这将会将vite的`root`根目录设置在`/client`:
 
 ```typescript
-
+//config/config.default.ts
 import {EggAppConfig, PowerPartial} from "egg";
 
 const config: PowerPartial<EggAppConfig> = {
@@ -24,6 +24,7 @@ export default config;
 2. 添加 `tegg-vite-plugin` 到 `plugin.ts`
 
 ```typescript
+//config/plugin.ts
 import {EggPlugin} from 'egg';
 import * as path from 'path';
 
@@ -43,7 +44,7 @@ export default plugin;
 
 细节可以参考： [vite doc:createserver](https://vitejs.dev/guide/api-javascript.html#createserver).
 
-but 但是与之不同的是为了方便ssr，增加了 `teggSSR`字段:
+但是与之不同的是为了方便ssr，增加了 `teggSSR`字段:
 
 ```typescript
 
@@ -98,7 +99,7 @@ export default config;
 ```
 2. 把你的处理方法放入Controller,如果你使用的是这个插件的默认ssr render：
 
-** [注意！！！]:  default handler 还没完全实现 ：） **
+__[注意！！！]:  default handler 还没实现__
 
 ```typescript
 //controller/SSRController.ts
