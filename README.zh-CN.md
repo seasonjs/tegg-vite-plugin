@@ -98,7 +98,7 @@ export default config;
 ```
 2. 把你的处理方法放入Controller,如果你使用的是这个插件的默认ssr render：
 
-*** [注意！！！]:  default handler 还没完全实现 ：） ***
+__[注意！！！]:  default handler 还没实现__
 
 ```typescript
 //controller/SSRController.ts
