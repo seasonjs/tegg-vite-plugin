@@ -1,9 +1,9 @@
-const SERVER = Symbol('application#vite-server');
+const VITE = Symbol('application#vite-server');
 export default {
-    get viteDevServe() {
-        return this[SERVER];
+    get vite() {
+        return this[VITE];
     },
-    set viteDevServe(value) {
-        this[SERVER] = value;
-    },
-}
+    set vite(value) {
+        this[VITE] = value;
+    }
+};

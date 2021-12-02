@@ -1,10 +1,6 @@
-import {InlineConfig} from "vite";
+import {EggAppConfig, PowerPartial} from "egg";
 
-const config: { vite: InlineConfig } = {
-    vite: {
-        server: {
-            middlewareMode: 'html'
-        }
-    }
+const config: PowerPartial<EggAppConfig> = {
+    vite: {}
 }
 export default config;

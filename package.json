@@ -1,7 +1,7 @@
 {
   "name": "@seasonjs/tegg-vite-plugin",
   "eggPlugin": {
-    "name": "tegg-vite-plugin"
+    "name": "teggVite"
   },
   "version": "0.0.1",
   "description": "vite plugin for egg",
