@@ -4,6 +4,9 @@ English | [简体中文](./README.zh-CN.md)
 
 # @seasonjs/tegg-vite-plugin
 
+<a href="https://www.npmjs.com/package/@seasonjs/tools"><img src="https://img.shields.io/npm/v/@seasonjs/tegg-vite-plugin.svg?sanitize=true" alt="Version"></a>
+<a href="https://www.npmjs.com/package/@seasonjs/tools"><img src="https://img.shields.io/npm/l/@seasonjs/tegg-vite-plugin.svg?sanitize=true" alt="License"></a>
+
 use vite and egg for ssr or csr
 
 ## 1. Enable this plugin just two step
