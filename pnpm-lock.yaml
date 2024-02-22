@@ -828,7 +828,7 @@ packages:
       egg-path-matching: 1.0.1
       escape-html: 1.0.3
       extend: 3.0.2
-      ip: 1.1.5
+      ip: 1.1.9
       koa-compose: 4.1.0
       matcher: 1.1.1
       methods: 1.1.2
@@ -1463,8 +1463,8 @@ packages:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
     dev: true
 
-  /ip@1.1.5:
-    resolution: {integrity: sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=}
+  /ip@1.1.9:
+    resolution: {integrity: sha512-cyRxvOEpNHNtchU3Ln9KC/auJgup87llfQpQ+t5ghoC/UhL16SWzbueiCsdTnWmqAWl7LadfuwhlqmtOaqMHdQ==}
     dev: true
 
   /is-class-hotfix@0.0.6:
@@ -1954,7 +1954,7 @@ packages:
     engines: {node: '>= 8'}
     dependencies:
       degenerator: 3.0.1
-      ip: 1.1.5
+      ip: 1.1.9
       netmask: 2.0.2
     dev: true
 
@@ -2236,7 +2236,7 @@ packages:
     resolution: {integrity: sha512-kLQ9N5ucj8uIcxrDwjm0Jsqk06xdpBjGNQtpXy4Q8/QY2k+fY7nZH8CARy+hkbG+SGAovmzzuauCpBlb8FrnBA==}
     engines: {node: '>= 10.13.0', npm: '>= 3.0.0'}
     dependencies:
-      ip: 1.1.5
+      ip: 1.1.9
       smart-buffer: 4.2.0
     dev: true
 
@@ -2406,7 +2406,7 @@ packages:
       formstream: 1.1.1
       humanize-ms: 1.2.1
       iconv-lite: 0.4.24
-      ip: 1.1.5
+      ip: 1.1.9
       proxy-agent: 5.0.0
       pump: 3.0.0
       qs: 6.10.1
